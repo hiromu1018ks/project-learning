@@ -1,0 +1,191 @@
+/* project-learning 学習教材の共通スタイル
+   各 HTML に直接埋め込まれるため、外部ファイルへの依存はない。 */
+
+:root {
+  --text: #24292f;
+  --subtle: #57606a;
+  --line: #d0d7de;
+  --bg: #ffffff;
+  --bg-sub: #f6f8fa;
+  --accent: #0969da;
+  --code-bg: #f6f8fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0 1rem 4rem;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Noto Sans JP", Meiryo, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.95;
+  letter-spacing: 0.01em;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.pl-meta {
+  color: var(--subtle);
+  font-size: 0.85rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--text);
+}
+
+h2 {
+  font-size: 1.45rem;
+  margin: 3rem 0 1rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 2.2rem 0 0.8rem;
+}
+
+h4 {
+  font-size: 1.05rem;
+  margin: 1.8rem 0 0.6rem;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+ul, ol {
+  padding-left: 1.6rem;
+  margin: 1rem 0;
+}
+
+li {
+  margin: 0.4rem 0;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.88em;
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.85rem;
+  white-space: pre;
+}
+
+/* テキスト図(罫線で描いた図)は等幅でそのまま表示する */
+blockquote {
+  margin: 1.2rem 0;
+  padding: 0.4rem 1.2rem;
+  border-left: 4px solid var(--line);
+  color: var(--subtle);
+  background: var(--bg-sub);
+}
+
+table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  width: 100%;
+  font-size: 0.92rem;
+}
+
+th, td {
+  border: 1px solid var(--line);
+  padding: 0.55rem 0.85rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background: var(--bg-sub);
+  font-weight: 700;
+}
+
+tr:nth-child(even) td {
+  background: var(--bg-sub);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 2.5rem 0;
+}
+
+strong {
+  font-weight: 700;
+}
+
+/* 教材一覧ページ(index.html) */
+.pl-index-list {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.pl-index-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.9rem 0.25rem;
+  border-bottom: 1px solid var(--line);
+  margin: 0;
+}
+
+.pl-index-list a {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.pl-date {
+  color: var(--subtle);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
