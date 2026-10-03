@@ -1,10 +1,8 @@
 # project-learning
 
-superpowers で開発したプロジェクトを、初学者向けの学習教材に変換する Claude Code スキルです。
+superpowersで開発したプロジェクトを、初学者向けの学習教材に変換するClaude Codeスキルです。
 
-設計書・計画書・実装コードを読み、「なぜこのコードになったのか」を段階的に説明する
-学習ドキュメント(Markdown + HTML)を `docs/learning/` に生成します。
-AI に開発を任せても、あなた自身が設計と実装の意図を理解できる状態を作ります。
+設計書・計画書・実装コードを読み、「なぜこのコードになったのか」を段階的に説明する学習ドキュメント(Markdown + HTML)を`docs/learning/`に生成します。AIに開発を任せても、設計と実装の意図をあなた自身が理解できる状態を作ります。
 
 ## インストール
 
@@ -12,30 +10,29 @@ AI に開発を任せても、あなた自身が設計と実装の意図を理�
 npx skills add hiromu1018ks/project-learning
 ```
 
-このコマンドは、GitHub からこのスキルをダウンロードして、お使いの Claude Code で
-使える状態にします(npm の実行には Node.js が必要です)。
+このコマンドは、GitHubからこのスキルをダウンロードして、お使いのClaude Codeで使える状態にします(npmの実行にはNode.jsが必要です)。
 
 ## 使い方
 
-superpowers による設計 → 計画 → 実装が完了したプロジェクトで、次のように言います。
+superpowersによる設計 → 計画 → 実装が完了したプロジェクトで、次のように言います。
 
 ```
 このプロジェクトを学習教材にして
 ```
 
-あるいは学習を続けたいとき:
+続きを書いてほしいときは、次のように言います。
 
 ```
 前回に続き学習したい
 ```
 
-スキルが自動で起動し、次の流れで進めます。
+スキルが自動で起動し、流れは次のとおりです。
 
 1. `LEARNING_STATE.md`(進捗記録)の確認
 2. `docs/superpowers/` 配下の設計書・計画書と実装コードの発見
 3. 執筆テーマの提案と確認
-4. 初学者向け教材の Markdown 執筆
-5. 同梱スクリプトによる HTML と一覧ページ(index.html)の生成
+4. 初学者向け教材のMarkdown執筆
+5. 同梱スクリプトによるHTMLと一覧ページ(index.html)の生成
 6. 進捗記録の更新
 
 ## 出力物
@@ -50,16 +47,16 @@ docs/learning/
 
 ## 必要なもの
 
-- [Claude Code](https://claude.com/claude-code)(superpowers プラグイン推奨)
-- Node.js 18 以上(HTML 変換スクリプトの実行に使用)
+- [Claude Code](https://claude.com/claude-code)(superpowersプラグイン推奨)
+- Node.js 18以上(HTML変換スクリプトの実行に使用)
 
 ## 教材の方針
 
-- 読者は「プログラミング経験ほぼゼロの初学者」を想定
-- 専門用語は初出時に必ず平易な定義を併記
+- 読者は、プログラミング経験がほぼゼロの初学者を想定する
+- 専門用語は、初出時に必ず平易な定義を併記する
 - 例え話は使わず、テキスト図と表で構造を視覚的に示す
-- コードは 3〜10 行の断片に分け、直後に説明を添える
-- 1 枚 = 1 テーマ(1 つの設計書と、その計画・実装のセット)
+- コードは3〜10行の断片に分け、直後に説明を添える
+- 1枚で1テーマを扱う(1つの設計書と、その計画・実装のセット)
 
 ## 構成
 
@@ -75,5 +72,4 @@ project-learning/          ← スキル本体(npx skills add でインストー
 
 ## ライセンス
 
-MIT License。同梱している [marked](https://github.com/markedjs/marked) は MIT ライセンスで、
-`assets/marked-LICENSE.txt` に原文を保持しています。
+MIT License。同梱している[marked](https://github.com/markedjs/marked)はMITライセンスで、`assets/marked-LICENSE.txt`に原文を保持しています。
