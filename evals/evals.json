@@ -1,0 +1,49 @@
+{
+  "skill_name": "project-learning",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "first-run-generates-doc",
+      "prompt": "superpowers で todo アプリの開発が一通り終わったよ。このプロジェクトを学習教材にしてほしい。",
+      "expected_output": "docs/learning/ に初学者向けの教材 md が生成され、変換スクリプトで html と index.html が作られ、LEARNING_STATE.md が新規作成・更新される。",
+      "files": ["project-learning-workspace/fixtures/fixture-a"],
+      "assertions": [
+        "docs/learning/ に教材の .md ファイルが1つ以上生成されている",
+        "教材 md の冒頭に frontmatter(title と date)がある",
+        "各 md に対応する .html と、一覧ページ index.html が生成されている",
+        "LEARNING_STATE.md が作成され、執筆済みドキュメントが記録されている",
+        "教材内の最大のコードブロックが10行以下である",
+        "教材本文に、専門用語への平易な定義の併記が1か所以上ある",
+        "テスト用元プロジェクト(fixtures/fixture-a)が変更されていない"
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "second-run-no-duplicates",
+      "prompt": "前回に続き学習したい。01-todo-cli.md は読んだので、残りをお願い。",
+      "expected_output": "LEARNING_STATE.md を読み、既存の 01 を書き直さず、未執筆テーマ(検索機能)の 02 を追加する。連番と状態更新が正しい。",
+      "files": ["project-learning-workspace/fixtures/fixture-b"],
+      "assertions": [
+        "既存の docs/learning/01-todo-cli.md が変更されていない",
+        "02- で始まる教材 md が新規に生成されている",
+        "index.html に 01 と 02 の両方へのリンクがある",
+        "LEARNING_STATE.md の未執筆テーマから検索機能が消え、執筆済み一覧に 02 が追加されている",
+        "教材内の最大のコードブロックが10行以下である",
+        "テスト用元プロジェクト(fixtures/fixture-b)が変更されていない"
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "no-artifacts-reports-cleanly",
+      "prompt": "このプロジェクトを教材化して。",
+      "expected_output": "設計書・計画書が見つからない旨を報告して終了する。推測で教材を作らない。",
+      "files": ["project-learning-workspace/fixtures/fixture-c"],
+      "assertions": [
+        "work/ 内に docs/learning/ が作成されていない(教材ファイルが存在しない)",
+        "LEARNING_STATE.md が作成されていない",
+        "報告文が「設計書・計画書が見つからない」旨を伝えている",
+        "テスト用元プロジェクト(fixtures/fixture-c)が変更されていない"
+      ]
+    }
+  ]
+}
