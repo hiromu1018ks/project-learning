@@ -1,6 +1,6 @@
 ---
 name: project-learning
-description: superpowers の設計・実装が完了したプロジェクトを、初学者向けの walkthrough 式学習教材(利用者の操作を起点に、コードの実行順を追う解説書。Markdown + HTML)に変換する。実装コードを読んで操作を章立てし、docs/learning/ に章ごとの解説書を生成し、進捗を LEARNING_STATE.md で管理する。ユーザーが「学習ドキュメントを作って」「教材化して」「このプロジェクトを学びたい」「復習したい」「続きを学習したい」と言ったとき、また superpowers フローの完了後に学習コンテンツが必要なときは、このスキルを必ず使う。
+description: superpowers の設計・実装が完了したプロジェクトを、初学者向けの walkthrough 式学習教材(利用者の操作を起点に、コードの実行順を追う解説書。Markdown + HTML)に変換する。実装コードを読んで操作を章立てし、docs/learning/ に章ごとの解説書を生成し、進捗を LEARNING_STATE.md で管理する。このスキルは、ユーザーが明示的に呼び出した場合(/project-learning の実行、「project-learning スキルを使って」など)にだけ使う。会話の中で「学びたい」「教材化できそう」などと触れられただけでは、このスキルを自分から使わず、提案もしない。
 ---
 
 # project-learning: 成果物を walkthrough 式の学習教材に変換する
