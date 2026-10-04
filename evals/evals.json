@@ -3,46 +3,51 @@
   "evals": [
     {
       "id": 1,
-      "eval_name": "first-run-generates-doc",
-      "prompt": "superpowers で todo アプリの開発が一通り終わったよ。このプロジェクトを学習教材にしてほしい。",
-      "expected_output": "docs/learning/ に初学者向けの教材 md が生成され、変換スクリプトで html と index.html が作られ、LEARNING_STATE.md が新規作成・更新される。",
+      "eval_name": "first-run-walkthrough",
+      "prompt": "superpowers で todo アプリの開発が一通り終わったよ。このプロジェクトを学習教材にしてほしい。提案が表示されたら、そのままOKで進めて。",
+      "expected_output": "docs/learning/ に 章0(00-)と 章1(01-)の walkthrough 形式の章が生成され、html と index.html が作られ、LEARNING_STATE.md が新形式(章リスト+再開地点)で作成される。",
       "files": ["project-learning-workspace/fixtures/fixture-a"],
       "assertions": [
-        "docs/learning/ に教材の .md ファイルが1つ以上生成されている",
-        "教材 md の冒頭に frontmatter(title と date)がある",
-        "各 md に対応する .html と、一覧ページ index.html が生成されている",
-        "LEARNING_STATE.md が作成され、執筆済みドキュメントが記録されている",
-        "教材内の最大のコードブロックが10行以下である",
-        "教材本文に、専門用語への平易な定義の併記が1か所以上ある",
-        "テスト用元プロジェクト(fixtures/fixture-a)が変更されていない"
+        "docs/learning/ に 00- と 01- で始まる .md ファイルが生成されている",
+        "章0(00-.md)に、頻出用語の定義表とフォルダ構造のテキスト図がある",
+        "章1(01-.md)に 4 パートの見出し(この章で追う操作 / 流れの全体図 / 実行の追跡 / この章で登場したファイル)がこの順で並んでいる",
+        "コード断片がすべて 10 行以内である(awk 点検コマンドの値が 10 以下)",
+        "テキスト図には text タグが付いており、無タグのブロックが 0 個である",
+        "すべてのコード断片の直後に「行ごとのやっていること」の表がある",
+        "LEARNING_STATE.md が新形式で作成され、章リストの表と「再開地点」の節がある",
+        "再開地点が、次に書く章の開始位置を具体的に示している",
+        ".html と index.html が生成されている",
+        "fixtures/fixture-a のファイルが1つも変更されていない"
       ]
     },
     {
       "id": 2,
-      "eval_name": "second-run-no-duplicates",
-      "prompt": "前回に続き学習したい。01-todo-cli.md は読んだので、残りをお願い。",
-      "expected_output": "LEARNING_STATE.md を読み、既存の 01 を書き直さず、未執筆テーマ(検索機能)の 02 を追加する。連番と状態更新が正しい。",
+      "eval_name": "second-run-continuity",
+      "prompt": "前回に続き学習したい。続きの章をお願い。提案が出たらそのまま進めて。",
+      "expected_output": "LEARNING_STATE.md を読み、章2(タスクを追加する)を章1の続きとして執筆する。つなぎ目の行、(章1で説明済み)の参照、進捗と再開地点の更新が正しい。",
       "files": ["project-learning-workspace/fixtures/fixture-b"],
       "assertions": [
-        "既存の docs/learning/01-todo-cli.md が変更されていない",
-        "02- で始まる教材 md が新規に生成されている",
-        "index.html に 01 と 02 の両方へのリンクがある",
-        "LEARNING_STATE.md の未執筆テーマから検索機能が消え、執筆済み一覧に 02 が追加されている",
-        "教材内の最大のコードブロックが10行以下である",
-        "テスト用元プロジェクト(fixtures/fixture-b)が変更されていない"
+        "02- で始まる章の .md が新規に生成されている",
+        "章2 の本文が「タスクを追加する」操作(add の道)を追跡している",
+        "章2 の冒頭に、章1 とのつなぎ目の行がある",
+        "章1 で説明済みの関数(load など)が「(章1で説明済み)」の形で参照され、同じ説明を繰り返していない",
+        "既存の 00-junbi.md と 01-usage.md が変更されていない",
+        "LEARNING_STATE.md の章2 の行にファイル名と執筆日が入り、再開地点が章3 向けに更新されている",
+        "コード断片がすべて 10 行以内であり、無タグのブロックが 0 個である",
+        "fixtures/fixture-b のファイルが1つも変更されていない"
       ]
     },
     {
       "id": 3,
-      "eval_name": "no-artifacts-reports-cleanly",
+      "eval_name": "no-implementation-report",
       "prompt": "このプロジェクトを教材化して。",
-      "expected_output": "設計書・計画書が見つからない旨を報告して終了する。推測で教材を作らない。",
-      "files": ["project-learning-workspace/fixtures/fixture-c"],
+      "expected_output": "実装コードが無い旨を報告して終了する。docs/learning/ や LEARNING_STATE.md を作らず、推測で教材を作らない。",
+      "files": ["project-learning-workspace/fixtures/fixture-d"],
       "assertions": [
-        "work/ 内に docs/learning/ が作成されていない(教材ファイルが存在しない)",
+        "docs/learning/ ディレクトリが作成されていない",
         "LEARNING_STATE.md が作成されていない",
-        "報告文が「設計書・計画書が見つからない」旨を伝えている",
-        "テスト用元プロジェクト(fixtures/fixture-c)が変更されていない"
+        "報告が「実装コードが見つからない」旨を伝えている",
+        "fixtures/fixture-d のファイルが1つも変更されていない"
       ]
     }
   ]
